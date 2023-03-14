@@ -9,6 +9,7 @@ createApp({
     data() {
         return {
             activeImages: 0,
+            autoRunning: true,
             slides: [
                 {
                     image: 'img/01.webp',
@@ -36,20 +37,42 @@ createApp({
     },
     methods: {
         nextImages() {
-          this.activeImages++;
-           if(this.activeImages > this.slides.length - 1){
-             this.activeImages = 0;
-           }
+            this.activeImages++;
+            if (this.activeImages > this.slides.length - 1) {
+                this.activeImages = 0;
+            }
         },
         prevImages() {
-          this.activeImages--;
-          if(this.activeImages < 0){
-            this.activeImages = this.slides.length - 1;
-          }          
+            this.activeImages--;
+            if (this.activeImages < 0) {
+                this.activeImages = this.slides.length - 1;
+            }
         },
-        selectImage(index){
-          console.log(index);
-          this.activeImages=index;
+        selectImage(index) { this.activeImages = index },
+
+        activeVerify(index) {
+            if (index === this.activeImages) {
+                return ('active');
+            }
+        },
+        autoNext() {
+            setInterval(() => {
+                if(this.autoRunning){
+                   this.nextImages() 
+                }
+            }, 2000);
+        },
+
+        stopNext() {
+            this.autoRunning = false
+        },
+
+        restartNext(){
+            this.autoRunning = true
         }
-      }
+    },
+    mounted() {
+        this.autoNext()
+
+    }
 }).mount('#app');
