@@ -14,7 +14,7 @@
     <div id="app">
 
         <div class="container">
-            <div class="slider-wrapper" tabindex="0" @mouseover="stopNext()" @mouseout="restartNext()">
+            <div class="slider-wrapper" tabindex="0" @mouseover="stopAutoRunning()" @mouseout="startAutoRunning()">
 
                 <div class="item">
                     <img :src="slides[activeImages].image" alt="Spiderman" />

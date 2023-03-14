@@ -58,16 +58,16 @@ createApp({
         autoNext() {
             setInterval(() => {
                 if(this.autoRunning){
-                   this.nextImages() 
+                   this.nextImages(); 
                 }
             }, 2000);
         },
 
-        stopNext() {
+        stopAutoRunning() {
             this.autoRunning = false
         },
 
-        restartNext(){
+        startAutoRunning(){
             this.autoRunning = true
         }
     },
